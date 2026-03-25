@@ -44,7 +44,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6 text-balance leading-tight"
           >
-            Indique e Seja <span className="text-[#BFB4AA]">Recompensado</span>
+            Quem Indica <span className="text-[#BFB4AA]">Multiplica!</span>
           </motion.h1>
 
           <motion.p

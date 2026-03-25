@@ -20,6 +20,7 @@ export function ReferralForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    const form = e.currentTarget
 
     if (!acceptedTerms || !acceptedPrivacy || !acceptedRules) {
       toast({
@@ -32,18 +33,46 @@ export function ReferralForm() {
 
     setLoading(true)
 
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      // Collecting data from the form
+      const data = {
+        name: (document.getElementById("seu-nome") as HTMLInputElement).value,
+        email: (document.getElementById("seu-email") as HTMLInputElement).value,
+        mobile_phone: (document.getElementById("seu-telefone") as HTMLInputElement).value,
+        cf_mensagem: `Indicação: ${(document.getElementById("indicado-nome") as HTMLInputElement).value} - Telefone: ${(document.getElementById("indicado-telefone") as HTMLInputElement).value} - Email: ${(document.getElementById("indicado-email") as HTMLInputElement).value} - Cidade: ${(document.getElementById("indicado-cidade") as HTMLInputElement).value} | Indicado por: CPF: ${(document.getElementById("seu-cpf") as HTMLInputElement).value}`,
+      }
 
-    toast({
-      title: "Indicação enviada!",
-      description: "Obrigado por indicar a Armangni Imóveis. Entraremos em contato em breve.",
-    })
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    setLoading(false)
-    e.currentTarget.reset()
-    setAcceptedTerms(false)
-    setAcceptedPrivacy(false)
-    setAcceptedRules(false)
+      if (!response.ok) {
+        throw new Error("Erro ao enviar indicação");
+      }
+
+      toast({
+        title: "Indicação enviada!",
+        description: "Obrigado por indicar a Armangni Imóveis. Entraremos em contato em breve.",
+      })
+
+      form.reset()
+      setAcceptedTerms(false)
+      setAcceptedPrivacy(false)
+      setAcceptedRules(false)
+    } catch (error) {
+      console.error(error);
+      toast({
+        title: "Erro",
+        description: "Ocorreu um erro ao enviar sua indicação. Tente novamente mais tarde.",
+        variant: "destructive",
+      })
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
