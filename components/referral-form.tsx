@@ -218,7 +218,7 @@ export function ReferralForm() {
                     className="border-[#3a3a3a] data-[state=checked]:bg-[#BFB4AA] data-[state=checked]:border-[#BFB4AA] mt-1"
                   />
                   <Label htmlFor="rules" className="text-sm leading-relaxed cursor-pointer text-gray-400">
-                    Declaro que li e concordo com todas as regras da campanha de indicações descritas na seção <span className="text-[#BFB4AA]">Regras da Campanha</span>
+                    Declaro que li e concordo com todas as regras da campanha de indicações descritas na seção
                   </Label>
                 </div>
                 <div className="flex items-start gap-3">
