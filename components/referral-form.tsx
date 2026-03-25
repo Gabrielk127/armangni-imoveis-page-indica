@@ -39,7 +39,11 @@ export function ReferralForm() {
         name: (document.getElementById("seu-nome") as HTMLInputElement).value,
         email: (document.getElementById("seu-email") as HTMLInputElement).value,
         mobile_phone: (document.getElementById("seu-telefone") as HTMLInputElement).value,
-        cf_mensagem: `Indicação: ${(document.getElementById("indicado-nome") as HTMLInputElement).value} - Telefone: ${(document.getElementById("indicado-telefone") as HTMLInputElement).value} - Email: ${(document.getElementById("indicado-email") as HTMLInputElement).value} - Cidade: ${(document.getElementById("indicado-cidade") as HTMLInputElement).value} | Indicado por: CPF: ${(document.getElementById("seu-cpf") as HTMLInputElement).value}`,
+        nome_do_indicado: (document.getElementById("indicado-nome") as HTMLInputElement).value,
+        telefone_do_indicado: (document.getElementById("indicado-telefone") as HTMLInputElement).value,
+        email_do_indicado: (document.getElementById("indicado-email") as HTMLInputElement).value,
+        cidade_do_indicado: (document.getElementById("indicado-cidade") as HTMLInputElement).value,
+        cpf_do_indicador: (document.getElementById("seu-cpf") as HTMLInputElement).value,
       }
 
       const response = await fetch("/api/contact", {

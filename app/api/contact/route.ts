@@ -13,7 +13,16 @@ export async function POST(request: Request) {
         name: data.name,
         email: data.email,
         mobile_phone: mobilePhone,
-        cf_mensagem: data.cf_mensagem,
+        cf_nome_do_indicado: data.nome_do_indicado,
+        cf_telefone_do_indicado: data.telefone_do_indicado,
+        cf_email_do_indicado: data.email_do_indicado,
+        cf_cidade_do_indicado: data.cidade_do_indicado,
+        cf_cpf_do_indicador: data.cpf_do_indicador,
+        nome_do_indicado: data.nome_do_indicado,
+        telefone_do_indicado: data.telefone_do_indicado,
+        email_do_indicado: data.email_do_indicado,
+        cidade_do_indicado: data.cidade_do_indicado,
+        cpf_do_indicador: data.cpf_do_indicador,
       },
     };
 
