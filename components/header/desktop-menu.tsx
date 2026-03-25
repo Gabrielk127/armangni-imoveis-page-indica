@@ -9,6 +9,7 @@ const DesktopMenu = () => {
     { label: "Início", href: "#inicio" },
     { label: "Prêmios", href: "#premios" },
     { label: "Como Funciona", href: "#como-funciona" },
+    { label: "Regras", href: "#regras" },
   ]
 
   return (

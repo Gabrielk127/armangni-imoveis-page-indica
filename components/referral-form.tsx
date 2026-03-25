@@ -59,8 +59,8 @@ export function ReferralForm() {
       }
 
       toast({
-        title: "Indicação enviada!",
-        description: "Obrigado por indicar a Armangni Imóveis. Entraremos em contato em breve.",
+        title: "Indicação enviada com sucesso!",
+        description: "Obrigado por indicar a Armangni Imóveis. Nossa equipe entrará em contato com o indicado em breve.",
       })
 
       form.reset()
@@ -70,8 +70,8 @@ export function ReferralForm() {
     } catch (error) {
       console.error(error);
       toast({
-        title: "Erro",
-        description: "Ocorreu um erro ao enviar sua indicação. Tente novamente mais tarde.",
+        title: "Erro no envio",
+        description: "Ocorreu um erro ao enviar sua indicação. Verifique os dados e tente novamente.",
         variant: "destructive",
       })
     } finally {
@@ -91,7 +91,7 @@ export function ReferralForm() {
         >
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-3 md:mb-4 text-balance">Faça Sua Indicação</h2>
           <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto text-pretty leading-relaxed px-2 sm:px-0">
-            Preencha o formulário abaixo com seus dados e os dados da pessoa indicada
+            Preencha corretamente os dados do formulário da Campanha Indicação Premiada
           </p>
         </motion.div>
 
@@ -106,60 +106,62 @@ export function ReferralForm() {
             <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
               {/* Dados do Indicado */}
               <div className="space-y-4">
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Dados do Indicado</h3>
+                <h3 className="text-lg sm:text-xl font-semibold text-[#BFB4AA] mb-3 sm:mb-4">Dados do Indicado</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="indicado-nome" className="text-gray-300">
-                      Nome Completo *
+                      Nome Completo do Indicado *
                     </Label>
                     <Input
                       id="indicado-nome"
-                      placeholder="Nome do indicado"
+                      placeholder="Nome completo"
                       required
-                      className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500"
+                      className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500 focus:border-[#BFB4AA]"
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="indicado-telefone" className="text-gray-300">
-                      Telefone *
+                      Telefone do Indicado *
                     </Label>
                     <Input
                       id="indicado-telefone"
                       type="tel"
                       placeholder="(00) 00000-0000"
                       required
-                      className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500"
+                      className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500 focus:border-[#BFB4AA]"
                     />
                   </div>
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="indicado-email" className="text-gray-300">
-                    E-mail *
-                  </Label>
-                  <Input
-                    id="indicado-email"
-                    type="email"
-                    placeholder="email@exemplo.com"
-                    required
-                    className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="indicado-cidade" className="text-gray-300">
-                    Cidade de Interesse *
-                  </Label>
-                  <Input
-                    id="indicado-cidade"
-                    placeholder="Cidade"
-                    required
-                    className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500"
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="indicado-email" className="text-gray-300">
+                      E-mail do Indicado *
+                    </Label>
+                    <Input
+                      id="indicado-email"
+                      type="email"
+                      placeholder="email@exemplo.com"
+                      required
+                      className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500 focus:border-[#BFB4AA]"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="indicado-cidade" className="text-gray-300">
+                      Cidade de Interesse *
+                    </Label>
+                    <Input
+                      id="indicado-cidade"
+                      placeholder="Cidade"
+                      required
+                      className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500 focus:border-[#BFB4AA]"
+                    />
+                  </div>
                 </div>
               </div>
 
               {/* Seus Dados */}
               <div className="space-y-4 pt-4 sm:pt-6 border-t border-[#3a3a3a]">
-                <h3 className="text-lg sm:text-xl font-semibold text-white mb-3 sm:mb-4">Seus Dados</h3>
+                <h3 className="text-lg sm:text-xl font-semibold text-[#BFB4AA] mb-3 sm:mb-4">Seus Dados (Indicador)</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="seu-nome" className="text-gray-300">
@@ -169,18 +171,18 @@ export function ReferralForm() {
                       id="seu-nome"
                       placeholder="Seu nome"
                       required
-                      className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500"
+                      className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500 focus:border-[#BFB4AA]"
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="seu-cpf" className="text-gray-300">
-                      Seu CPF *
+                      Seu CPF/CNPJ *
                     </Label>
                     <Input
                       id="seu-cpf"
                       placeholder="000.000.000-00"
                       required
-                      className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500"
+                      className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500 focus:border-[#BFB4AA]"
                     />
                   </div>
                 </div>
@@ -194,7 +196,7 @@ export function ReferralForm() {
                       type="email"
                       placeholder="seu@email.com"
                       required
-                      className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500"
+                      className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500 focus:border-[#BFB4AA]"
                     />
                   </div>
                   <div className="space-y-2">
@@ -206,7 +208,7 @@ export function ReferralForm() {
                       type="tel"
                       placeholder="(00) 00000-0000"
                       required
-                      className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500"
+                      className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500 focus:border-[#BFB4AA]"
                     />
                   </div>
                 </div>
@@ -222,7 +224,7 @@ export function ReferralForm() {
                     className="border-[#3a3a3a] data-[state=checked]:bg-[#BFB4AA] data-[state=checked]:border-[#BFB4AA] mt-1"
                   />
                   <Label htmlFor="rules" className="text-sm leading-relaxed cursor-pointer text-gray-400">
-                    Declaro que li e concordo com todas as regras da campanha de indicações descritas na seção
+                    Declaro que li e concordo com todas as regras da campanha de indicações descritas no regulamento.
                   </Label>
                 </div>
                 <div className="flex items-start gap-3">
@@ -233,7 +235,7 @@ export function ReferralForm() {
                     className="border-[#3a3a3a] data-[state=checked]:bg-[#BFB4AA] data-[state=checked]:border-[#BFB4AA] mt-1"
                   />
                   <Label htmlFor="terms" className="text-sm leading-relaxed cursor-pointer text-gray-400">
-                    Aceito os termos da promoção e declaro que as informações fornecidas são verdadeiras
+                    Aceito os termos da promoção e declaro que as informações fornecidas são verdadeiras.
                   </Label>
                 </div>
                 <div className="flex items-start gap-3">
@@ -244,19 +246,24 @@ export function ReferralForm() {
                     className="border-[#3a3a3a] data-[state=checked]:bg-[#BFB4AA] data-[state=checked]:border-[#BFB4AA] mt-1"
                   />
                   <Label htmlFor="privacy" className="text-sm leading-relaxed cursor-pointer text-gray-400">
-                    Li e aceito a Política de Privacidade da Armangni Imóveis e autorizo o contato para atendimento
+                    Li e aceito a Política de Privacidade e LGPD da Armangni Imóveis.
                   </Label>
                 </div>
               </div>
 
-              <Button
-                type="submit"
-                size="lg"
-                className="w-full bg-[#BFB4AA] hover:bg-[#a89f96] text-[#1C1C1C] py-5 sm:py-6 text-base sm:text-lg font-semibold cursor-pointer"
-                disabled={loading}
-              >
-                {loading ? "Enviando..." : "Enviar Indicação"}
-              </Button>
+              <div className="pt-2">
+                <p className="text-xs text-center text-gray-500 mb-6">
+                  * Campos obrigatórios. Sua indicação só será válida se o indicado não estiver em nossa base ativa.
+                </p>
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full bg-[#BFB4AA] hover:bg-[#a89f96] text-[#1C1C1C] py-5 sm:py-6 text-base sm:text-lg font-semibold cursor-pointer shadow-lg shadow-[#BFB4AA]/10"
+                  disabled={loading}
+                >
+                  {loading ? "Enviando Indicação..." : "Indicar Agora e Multiplicar!"}
+                </Button>
+              </div>
             </form>
           </Card>
         </motion.div>

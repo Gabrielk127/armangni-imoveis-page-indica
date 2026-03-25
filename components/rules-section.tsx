@@ -6,29 +6,30 @@ import { Card } from "@/components/ui/card"
 
 const rules = [
   {
-    title: "Como funciona",
+    title: "Quem Pode Participar",
     items: [
-      "Indique um amigo ou conhecido interessado em comprar um imóvel",
-      "Ao finalizar a compra, você receberá seu prêmio dentro de 30 dias úteis",
-      "Não há limite de indicações - quanto mais indicar, mais prêmios ganha",
+      "Pessoas físicas ou jurídicas maiores de 18 anos com CPF/CNPJ válido",
+      "Não há vínculo empregatício direto com a Armangni Imóveis",
+      "Preenchimento correto do formulário de indicação disponível na plataforma",
+      "Concordância com todos os termos desta Campanha ao enviar a indicação",
     ],
   },
   {
-    title: "Requisitos",
+    title: "Indicação Válida",
     items: [
-      "A indicação deve ser de uma pessoa que nunca teve contato com a Armangni Imóveis",
-      "O indicado não deve ser cliente da Armangni Imóveis nos últimos 12 meses",
-      "A compra deve ser concretizada através da intermediação da Armangni Imóveis",
-      "Todos os dados fornecidos devem estar corretos e verificáveis",
+      "Dados do indicador e do indicado preenchidos corretamente no formulário",
+      "O indicado não pode estar previamente na base de clientes nem em atendimento ativo da Armangni Imóveis",
+      "O indicado deve ser contatado pela Armangni Imóveis e concretizar a compra de um imóvel",
+      "Indicações com dados incompletos ou inválidos serão consideradas nulas",
     ],
   },
   {
-    title: "Prêmios",
+    title: "Pagamento & Prêmios",
     items: [
-      "Os prêmios são entregues mediante comprovação da conclusão da transação imobiliária",
-      "Os prêmios estão sujeitos à disponibilidade e podem variar conforme a região",
-      "Não é possível trocar prêmios por valores em dinheiro ou outros itens",
-      "A Armangni Imóveis se reserva o direito de substituir prêmios por equivalentes de mesmo valor",
+      "Pagamento via PIX ou transferência bancária em até 30 dias úteis após a assinatura do contrato",
+      "Prêmios físicos entregues em até 60 dias após a escolha do prêmio no endereço indicado",
+      "Cada indicado válido gera premiação apenas para o primeiro participante que o cadastrou",
+      "Não há limite de indicações — cada indicação deve resultar em venda distinta",
     ],
   },
 ]
@@ -46,7 +47,7 @@ export function RulesSection() {
         >
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-3 md:mb-4 text-balance">Regras da Campanha</h2>
           <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto text-pretty leading-relaxed px-2 sm:px-0">
-            Conheça todos os detalhes sobre como participar do programa de indicações
+            Conheça todos os detalhes sobre como participar do programa de indicações premiadas
           </p>
         </motion.div>
 
@@ -89,7 +90,7 @@ export function RulesSection() {
           className="mt-12 text-center"
         >
           <p className="text-sm text-gray-500 max-w-3xl mx-auto leading-relaxed">
-            Ao submeter o formulário de indicação, você concorda automaticamente com todas as regras e condições descritas acima. Em caso de dúvidas, entre em contato conosco.
+            Ao submeter o formulário de indicação, você concorda automaticamente com todas as regras e condições descritas acima. A Campanha é válida por prazo indeterminado e poderá ser suspensa ou alterada a qualquer momento mediante aviso prévio. Em caso de dúvidas, entre em contato conosco.
           </p>
         </motion.div>
       </div>

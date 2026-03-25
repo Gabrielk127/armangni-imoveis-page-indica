@@ -6,23 +6,23 @@ import { UserPlus, MessageCircle, ShoppingBag, Gift } from "lucide-react"
 const steps = [
   {
     icon: UserPlus,
-    title: "Preencha o Formulário",
-    description: "Informe os dados da pessoa que você deseja indicar de forma simples e rápida",
+    title: "Indique um Amigo",
+    description: "Preencha o formulário com seus dados e do indicado. Ele não deve estar em nossa base ativa.",
   },
   {
     icon: MessageCircle,
-    title: "Entramos em Contato",
-    description: "Nossa equipe entra em contato com seu indicado para apresentar nossos imóveis",
+    title: "Nós Entramos em Contato",
+    description: "Nossa equipe consultiva apresentará os melhores imóveis para o perfil do seu indicado.",
   },
   {
     icon: ShoppingBag,
-    title: "Indicado Realiza a Compra",
-    description: "Quando a venda é concretizada, você já está garantido no programa",
+    title: "Venda Concretizada",
+    description: "Assim que a compra for concluída, o seu bônus ou prêmio físico estará garantido.",
   },
   {
     icon: Gift,
-    title: "Escolha Seu Prêmio",
-    description: "Você escolhe o prêmio que preferir e retira em nossa central",
+    title: "Receba sua Premiação",
+    description: "Pagamentos em até 30 dias úteis e prêmios físicos entregues em até 60 dias.",
   },
 ]
 
@@ -39,7 +39,7 @@ export function HowItWorksSection() {
         >
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-3 md:mb-4 text-balance">Como Funciona</h2>
           <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto text-pretty leading-relaxed px-2 sm:px-0">
-            Participar é simples, seguro e totalmente gratuito
+            Participar do programa Indicação Premiada é simples, seguro e totalmente transparente
           </p>
         </motion.div>
 

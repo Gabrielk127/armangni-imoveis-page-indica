@@ -38,18 +38,23 @@ export function Footer() {
             <h3 className="font-semibold text-lg mb-4">Links Rápidos</h3>
             <ul className="space-y-2 text-gray-400 text-sm">
               <li>
-                <a href="#" className="hover:text-[#BFB4AA] transition-colors cursor-pointer">
-                  Sobre Nós
+                <a href="#inicio" className="hover:text-[#BFB4AA] transition-colors cursor-pointer">
+                  Início
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#BFB4AA] transition-colors cursor-pointer">
-                  Contato
+                <a href="#premios" className="hover:text-[#BFB4AA] transition-colors cursor-pointer">
+                  Prêmios
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-[#BFB4AA] transition-colors cursor-pointer">
-                  Regulamento
+                <a href="#regras" className="hover:text-[#BFB4AA] transition-colors cursor-pointer">
+                  Regras
+                </a>
+              </li>
+              <li>
+                <a href="#formulario" className="hover:text-[#BFB4AA] transition-colors cursor-pointer">
+                  Formulário
                 </a>
               </li>
             </ul>

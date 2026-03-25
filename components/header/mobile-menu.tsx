@@ -17,6 +17,7 @@ const MobileMenu = () => {
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
+      .replace(/\s+/g, "-") // Replaces spaces with hyphens
   }
 
   const handleNavigation = (id: string) => {
@@ -59,7 +60,7 @@ const MobileMenu = () => {
     }),
   }
 
-  const menuItems = ["Início", "Prêmios", "Como Funciona", "Formulário"]
+  const menuItems = ["Início", "Prêmios", "Como Funciona", "Regras", "Formulário"]
 
   return (
     <div className="relative">

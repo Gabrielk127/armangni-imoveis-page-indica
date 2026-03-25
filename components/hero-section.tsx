@@ -34,7 +34,7 @@ export function HeroSection() {
           >
             <div className="inline-flex items-center gap-2 bg-[#262626] text-[#BFB4AA] px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium mb-6 md:mb-8 border border-[#BFB4AA]/20">
               <Gift className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              Programa de Indicações
+              Campanha Indicação Premiada
             </div>
           </motion.div>
 
@@ -44,7 +44,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6 text-balance leading-tight"
           >
-            Quem Indica <span className="text-[#BFB4AA]">Multiplica!</span>
+            Sua Indicação Vale <span className="text-[#BFB4AA]">Prêmios Premium</span>
           </motion.h1>
 
           <motion.p
@@ -53,8 +53,7 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 md:mb-12 max-w-2xl mx-auto text-pretty leading-relaxed px-2 sm:px-0"
           >
-            Compartilhe a excelência da Armangni Imóveis. Quando sua indicação se tornar realidade, você ganha prêmios
-            incríveis.
+            Compartilhe a excelência da Armangni Imóveis. Quando sua indicação se torna uma venda, você ganha de Apple Watches a Smart TVs de 65".
           </motion.p>
 
           <motion.div
@@ -76,15 +75,25 @@ export function HeroSection() {
               className="border-[#BFB4AA] text-[#BFB4AA] hover:bg-[#BFB4AA]/10 w-full sm:w-auto px-8 py-5 sm:py-6 text-base sm:text-lg bg-transparent cursor-pointer"
               onClick={() => document.getElementById("premios")?.scrollIntoView({ behavior: "smooth" })}
             >
-              Ver Prêmios
+              Ver Tabela de Prêmios
             </Button>
           </motion.div>
+
+          {/* Social Proof / Mention the bonus */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.8 }}
+            className="mt-8 text-sm text-gray-500 font-medium"
+          >
+            Bônus extra de +R$ 2.000,00 para o melhor indicador do mês!
+          </motion.p>
 
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1 }}
-            className="mt-16"
+            className="mt-12"
           >
             <ArrowDown className="w-6 h-6 mx-auto text-gray-500 animate-bounce" />
           </motion.div>
