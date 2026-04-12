@@ -11,21 +11,30 @@ import { Card } from "@/components/ui/card"
 import { useState } from "react"
 import { useToast } from "@/hooks/use-toast"
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+  TooltipProvider,
+} from "@/components/ui/tooltip"
+import { RegulationModal, RulesContent, PrivacyContent } from "@/components/regulation-modal"
+
 export function ReferralForm() {
   const { toast } = useToast()
   const [loading, setLoading] = useState(false)
-  const [acceptedTerms, setAcceptedTerms] = useState(false)
   const [acceptedPrivacy, setAcceptedPrivacy] = useState(false)
   const [acceptedRules, setAcceptedRules] = useState(false)
+  const [hasViewedRules, setHasViewedRules] = useState(false)
+  const [hasViewedPrivacy, setHasViewedPrivacy] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const form = e.currentTarget
 
-    if (!acceptedTerms || !acceptedPrivacy || !acceptedRules) {
+    if (!acceptedPrivacy || !acceptedRules) {
       toast({
         title: "Atenção",
-        description: "Por favor, aceite os termos, as regras da campanha e a política de privacidade para continuar.",
+        description: "Por favor, aceite as regras da campanha e a política de privacidade para continuar.",
         variant: "destructive",
       })
       return
@@ -64,9 +73,10 @@ export function ReferralForm() {
       })
 
       form.reset()
-      setAcceptedTerms(false)
       setAcceptedPrivacy(false)
       setAcceptedRules(false)
+      setHasViewedRules(false)
+      setHasViewedPrivacy(false)
     } catch (error) {
       console.error(error);
       toast({
@@ -217,36 +227,92 @@ export function ReferralForm() {
               {/* Termos */}
               <div className="space-y-3 sm:space-y-4 pt-4 sm:pt-6 border-t border-[#3a3a3a]">
                 <div className="flex items-start gap-3">
-                  <Checkbox
-                    id="rules"
-                    checked={acceptedRules}
-                    onCheckedChange={(checked) => setAcceptedRules(checked as boolean)}
-                    className="border-[#3a3a3a] data-[state=checked]:bg-[#BFB4AA] data-[state=checked]:border-[#BFB4AA] mt-1"
-                  />
-                  <Label htmlFor="rules" className="text-sm leading-relaxed cursor-pointer text-gray-400">
-                    Declaro que li e concordo com todas as regras da campanha de indicações descritas no regulamento.
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <span className="mt-1">
+                          <Checkbox
+                            id="rules"
+                            checked={acceptedRules}
+                            onCheckedChange={(checked) => setAcceptedRules(checked as boolean)}
+                            disabled={!hasViewedRules}
+                            className="border-[#3a3a3a] data-[state=checked]:bg-[#BFB4AA] data-[state=checked]:border-[#BFB4AA] disabled:opacity-30"
+                          />
+                        </span>
+                      </TooltipTrigger>
+                      {!hasViewedRules && (
+                        <TooltipContent side="right" className="bg-[#BFB4AA] text-[#1C1C1C] border-none font-medium">
+                          Clique em "regras da campanha" para ler antes de aceitar.
+                        </TooltipContent>
+                      )}
+                    </Tooltip>
+                  </TooltipProvider>
+                  <Label 
+                    htmlFor="rules" 
+                    className={`block text-[13px] sm:text-sm leading-snug sm:leading-relaxed font-normal text-gray-400 cursor-pointer select-none pt-0.5 ${!hasViewedRules && 'opacity-70'}`}
+                  >
+                    Declaro que li e concordo com todas as{" "}
+                    <RegulationModal
+                      title="Regras da Campanha"
+                      pdfUrl="/docs/regulamento.pdf"
+                      onOpenChange={(open) => open && setHasViewedRules(true)}
+                      content={<RulesContent />}
+                      trigger={
+                        <span className="inline text-[#BFB4AA] hover:underline cursor-pointer font-semibold decoration-[#BFB4AA]/30 underline-offset-4">
+                          regras da campanha
+                        </span>
+                      }
+                    />{" "}
+                    de indicações.
+                    {!hasViewedRules && (
+                      <span className="text-[#BFB4AA]/70 text-[10px] sm:text-xs ml-1 font-medium italic">
+                        (clique para ler)
+                      </span>
+                    )}
                   </Label>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Checkbox
-                    id="terms"
-                    checked={acceptedTerms}
-                    onCheckedChange={(checked) => setAcceptedTerms(checked as boolean)}
-                    className="border-[#3a3a3a] data-[state=checked]:bg-[#BFB4AA] data-[state=checked]:border-[#BFB4AA] mt-1"
-                  />
-                  <Label htmlFor="terms" className="text-sm leading-relaxed cursor-pointer text-gray-400">
-                    Aceito os termos da promoção e declaro que as informações fornecidas são verdadeiras.
-                  </Label>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Checkbox
-                    id="privacy"
-                    checked={acceptedPrivacy}
-                    onCheckedChange={(checked) => setAcceptedPrivacy(checked as boolean)}
-                    className="border-[#3a3a3a] data-[state=checked]:bg-[#BFB4AA] data-[state=checked]:border-[#BFB4AA] mt-1"
-                  />
-                  <Label htmlFor="privacy" className="text-sm leading-relaxed cursor-pointer text-gray-400">
-                    Li e aceito a Política de Privacidade e LGPD da Armangni Imóveis.
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <span className="mt-1 flex-shrink-0">
+                          <Checkbox
+                            id="privacy"
+                            checked={acceptedPrivacy}
+                            onCheckedChange={(checked) => setAcceptedPrivacy(checked as boolean)}
+                            disabled={!hasViewedPrivacy}
+                            className="border-[#3a3a3a] data-[state=checked]:bg-[#BFB4AA] data-[state=checked]:border-[#BFB4AA] disabled:opacity-30"
+                          />
+                        </span>
+                      </TooltipTrigger>
+                      {!hasViewedPrivacy && (
+                        <TooltipContent side="right" className="bg-[#BFB4AA] text-[#1C1C1C] border-none font-medium">
+                          Clique em "Política de Privacidade" para ler antes de aceitar.
+                        </TooltipContent>
+                      )}
+                    </Tooltip>
+                  </TooltipProvider>
+                  <Label 
+                    htmlFor="privacy" 
+                    className={`block text-[13px] sm:text-sm leading-snug sm:leading-relaxed font-normal text-gray-400 cursor-pointer select-none pt-0.5 ${!hasViewedPrivacy && 'opacity-70'}`}
+                  >
+                    Li e aceito a{" "}
+                    <RegulationModal
+                      title="Política de Privacidade"
+                      onOpenChange={(open) => open && setHasViewedPrivacy(true)}
+                      content={<PrivacyContent />}
+                      trigger={
+                        <span className="inline text-[#BFB4AA] hover:underline cursor-pointer font-semibold decoration-[#BFB4AA]/30 underline-offset-4">
+                          Política de Privacidade
+                        </span>
+                      }
+                    />{" "}
+                    da Armangni Imóveis.
+                    {!hasViewedPrivacy && (
+                      <span className="text-[#BFB4AA]/70 text-[10px] sm:text-xs ml-1 font-medium italic">
+                        (clique para ler)
+                      </span>
+                    )}
                   </Label>
                 </div>
               </div>
