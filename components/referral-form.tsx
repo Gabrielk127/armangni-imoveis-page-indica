@@ -52,7 +52,6 @@ export function ReferralForm() {
         telefone_do_indicado: (document.getElementById("indicado-telefone") as HTMLInputElement).value,
         email_do_indicado: (document.getElementById("indicado-email") as HTMLInputElement).value,
         cidade_do_indicado: (document.getElementById("indicado-cidade") as HTMLInputElement).value,
-        cpf_do_indicador: (document.getElementById("seu-cpf") as HTMLInputElement).value,
       }
 
       const response = await fetch("/api/contact", {
@@ -172,29 +171,16 @@ export function ReferralForm() {
               {/* Seus Dados */}
               <div className="space-y-4 pt-4 sm:pt-6 border-t border-[#3a3a3a]">
                 <h3 className="text-lg sm:text-xl font-semibold text-[#BFB4AA] mb-3 sm:mb-4">Seus Dados (Indicador)</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="seu-nome" className="text-gray-300">
-                      Seu Nome Completo *
-                    </Label>
-                    <Input
-                      id="seu-nome"
-                      placeholder="Seu nome"
-                      required
-                      className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500 focus:border-[#BFB4AA]"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="seu-cpf" className="text-gray-300">
-                      Seu CPF/CNPJ *
-                    </Label>
-                    <Input
-                      id="seu-cpf"
-                      placeholder="000.000.000-00"
-                      required
-                      className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500 focus:border-[#BFB4AA]"
-                    />
-                  </div>
+                <div className="space-y-2">
+                  <Label htmlFor="seu-nome" className="text-gray-300">
+                    Seu Nome Completo *
+                  </Label>
+                  <Input
+                    id="seu-nome"
+                    placeholder="Seu nome"
+                    required
+                    className="bg-[#262626] border-[#3a3a3a] text-white placeholder:text-gray-500 focus:border-[#BFB4AA]"
+                  />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
